@@ -737,6 +737,10 @@ void mem_chain2aln(const mem_opt_t *opt, const bntseq_t *bns, const uint8_t *pac
 				for (j = 0; j < tmp; ++j) putchar("ACGTN"[(int)rs[j]]); putchar(',');
 				printf("%d,%d\n", s->len * opt->a, aw[0]);
 				*/
+				int j;
+				printf("%d\n", s->len * opt->a);
+				for (j = 0; j < tmp; ++j) putchar("01234"[(int)rs[j]]); putchar('\n');
+				for (j = 0; j < s->qbeg; ++j) putchar("01234"[(int)qs[j]]); putchar('\n');
 				a->score = ksw_extend2(s->qbeg, qs, tmp, rs, 5, opt->mat, opt->o_del, opt->e_del, opt->o_ins, opt->e_ins, aw[0], opt->pen_clip5, opt->zdrop, s->len * opt->a, &qle, &tle, &gtle, &gscore, &max_off[0]);
 				/*
 				printf("OUTPUT,%d,%d,%d,%d,%d,%d\n", a->score, qle, tle, gtle, gscore, max_off[0]);
@@ -776,8 +780,12 @@ void mem_chain2aln(const mem_opt_t *opt, const bntseq_t *bns, const uint8_t *pac
 				printf("INPUT,");
 				for (j = 0; j < l_query - qe; ++j) putchar("ACGTN"[(int)query[qe+j]]); putchar(',');
 				for (j = 0; j < rmax[1] - rmax[0] - re; ++j) putchar("ACGTN"[(int)rseq[re+j]]); putchar(',');
-				*/
 				printf("%d,%d\n", sc0, aw[1]);
+				*/
+				int j;
+				printf("%d\n", sc0);
+				for (j = 0; j < rmax[1] - rmax[0] - re; ++j) putchar("01234"[(int)rseq[re+j]]); putchar('\n');
+				for (j = 0; j < l_query - qe; ++j) putchar("01234"[(int)query[qe+j]]); putchar('\n');
 				a->score = ksw_extend2(l_query - qe, query + qe, rmax[1] - rmax[0] - re, rseq + re, 5, opt->mat, opt->o_del, opt->e_del, opt->o_ins, opt->e_ins, aw[1], opt->pen_clip3, opt->zdrop, sc0, &qle, &tle, &gtle, &gscore, &max_off[1]);
 				/*
 				printf("OUTPUT,%d,%d,%d,%d,%d,%d\n", a->score, qle, tle, gtle, gscore, max_off[1]);
